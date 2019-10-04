@@ -15,11 +15,12 @@
 template<typename GraphType>
 class DirectedCycle {
 private:
+  const GraphType& G;
 	/* A DEFINIR */
 	
 public:
 	//constructeur
-	DirectedCycle(const GraphType& g) {
+	DirectedCycle(const GraphType& g) : G(g) {
 		/* A IMPLEMENTER */
 	}
 	

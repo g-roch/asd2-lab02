@@ -9,5 +9,7 @@ main: main.cpp DiGraph.o Util.o DirectedCycle.h ParcoursEnProfondeur.h SymbolGra
 
 clean:
 	rm -fr *.o main
-
-
+install:
+	echo "Don't install"
+run:
+	./main

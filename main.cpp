@@ -8,6 +8,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <set>
 #include "Util.h"
 #include "DiGraph.h"
 #include "SymbolGraph.h"
@@ -51,6 +52,12 @@ bool checkOrder(const std::vector<int>& order,
 }
 
 int main(int argc, const char * argv[]) {
+
+    std::string file("prerequis.txt");
+    SymbolGraph<DiGraph> SG(file, ',');
+    std::cout << SG.G().V() << std::endl;
+
+    DirectedCycle<DiGraph> DC(SG.G());
 
     /* A IMPLEMENTER */
     
