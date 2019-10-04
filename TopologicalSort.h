@@ -19,17 +19,32 @@
 template < typename GraphType >
 class TopologicalSort {
 private:
-	/* A DEFINIR */
+   std::vector <int> reversedPostOrdRevGraph;
     
 public:
     //constructeur
     TopologicalSort(const GraphType & g) {
         /* A IMPLEMENTER */
         /* vous devez verifier la presence d'un cycle, auquel cas il faut lancer une  GraphNotDAGException*/
+       DirectedCycle dc(g);
+       if(dc.HasCycle())
+       {
+          throw GraphNotDAGException(dc.Cycle());
+       }
+       else
+       {
+          GraphType gReversed = g.reverse();
+          std::list<int> l;
+          gReversed.visit([l] (int i) {l.push_front(i);});
+          reversedPostOrdRevGraph.reserve(g.V());
+          for(auto i : l) 
+             reversedPostOrdRevGraph.push_back(i);
+       }
     }
     
     //tableau contenant l'ordre de parcours des indexes des sommets dans le graphe
     const std::vector<int>& Order() {
+       return reversedPostOrdRevGraph;
         /* A IMPLEMENTER */
         //return ...
     }
