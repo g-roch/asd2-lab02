@@ -14,7 +14,7 @@
 #include <vector>
 
 template<typename GraphType>
-class DirectedCycle {
+class DIRECTEDCYCLE {
 private:
   const GraphType& G;
 
@@ -49,8 +49,13 @@ private:
 
 public:
 	//constructeur
-	DirectedCycle(const GraphType& g) : G(g), marked(G.V(), -1), empiled(G.V(), false) {
-
+	DirectedCycle(const GraphType& G) : G(G), marked(G.V(), -1), empiled(G.V(), false) {
+    for(int i = 0; i < G.V(); ++i) {
+      if(market[v] == -1) {
+        market[v] = -2;
+        cycleDetection(v);
+      }
+    }
 	}
 
 	//indique la presence d'un cycle
@@ -62,6 +67,7 @@ public:
 
 	//liste les indexes des sommets formant une boucle
 	std::list<int> Cycle() {
+    return cycle;
 		/* A IMPLEMENTER */
 		//return ...
 	}
