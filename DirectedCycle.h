@@ -10,6 +10,8 @@
 #ifndef ASD2_DirectedCycle_h
 #define ASD2_DirectedCycle_h
 
+#include <list>
+
 template<typename GraphType>
 class DirectedCycle {
 private:
