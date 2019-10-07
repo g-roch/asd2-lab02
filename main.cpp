@@ -53,12 +53,26 @@ bool checkOrder(const std::vector<int>& order,
 
 int main(int argc, const char * argv[]) {
 
-    std::string file("prerequis.txt");
-    SymbolGraph<DiGraph> SG(file, ',');
-    std::cout << SG.G().V() << std::endl;
+    std::string prerequis1("prerequis.txt");
+    std::string prerequis2("prerequis2.txt");
+    SymbolGraph<DiGraph> SG1(prerequis1, ',');
+    SymbolGraph<DiGraph> SG2(prerequis2, ',');
+    std::cout << SG1.G().V() << std::endl;
+    std::cout << SG2.G().V() << std::endl;
 
-    DirectedCycle<DiGraph> DC(SG.G());
+    DirectedCycle<DiGraph> DC1(SG1.G());
+    std::cout << "-------" << std::endl;
+    DirectedCycle<DiGraph> DC2(SG2.G());
 
+    if(DC1.HasCycle()) std::cout << "has cycle" << std::endl;
+    else std::cout << "has not cycle" << std::endl;
+    if(DC2.HasCycle()) std::cout << "has cycle" << std::endl;
+    else std::cout << "has not cycle" << std::endl;
+
+    TopologicalSort<DiGraph> TS(SG1.G());
+    for(auto i : TS.Order()) {
+        std::cout << SG1.symbol(i) << std::endl;
+    }
     /* A IMPLEMENTER */
     
     return EXIT_SUCCESS;

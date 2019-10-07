@@ -11,5 +11,5 @@ clean:
 	rm -fr *.o main
 install:
 	echo "Don't install"
-run:
+run: main
 	./main

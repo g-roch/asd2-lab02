@@ -12,34 +12,29 @@
 
 #include <list>
 #include <vector>
-
 template<typename GraphType>
-class DIRECTEDCYCLE {
+class DirectedCycle {
 private:
   const GraphType& G;
 
-  std::vector<int> marked(G.V(), -1);
-  std::vector<bool> empiled(G.V(), false);
+  std::vector<int> marked;
+  std::vector<bool> empiled;
   std::list<int> cycle;
-  bool hasCycle = false;
 
   void cycleDetection(int v) {
     empiled[v] = true;
     for(auto sommet : G.adjacent(v))
     {
-      if (condition)
-      {
-        if(HasCycle()) return;
-        else if(marked[sommet] != -1) {
-          marked[sommet] = v;
-          cycleDetection(sommet);
-        }
-        else if(empiled[sommet]) {
-          // has cycle
+      if(HasCycle()) return;
+      else if(marked[sommet] == -1) {
+        marked[sommet] = v;
+        cycleDetection(sommet);
+      }
+      else if(empiled[sommet]) {
+        // has cycle
+        cycle.push_front(sommet);
+        for(int i = v; i != sommet; i = marked[i]) {
           cycle.push_front(sommet);
-          for(int i = v; i != sommet; i = marked[i]) {
-            cycle.push_front(sommet);
-          }
         }
       }
     }
@@ -50,16 +45,16 @@ private:
 public:
 	//constructeur
 	DirectedCycle(const GraphType& G) : G(G), marked(G.V(), -1), empiled(G.V(), false) {
-    for(int i = 0; i < G.V(); ++i) {
-      if(market[v] == -1) {
-        market[v] = -2;
-        cycleDetection(v);
+    for(int i = 0; i < G.V() && !HasCycle(); ++i) {
+      if(marked[i] == -1) {
+        marked[i] = i;
+        cycleDetection(i);
       }
     }
 	}
 
 	//indique la presence d'un cycle
-	bool HasCycle() {
+	bool HasCycle() const {
     return !cycle.empty();
 		/* A IMPLEMENTER */
 		//return ...
