@@ -3,8 +3,8 @@
  * Author: Olivier Cuisenaire
  * Created on 08. octobre 2014, 10:46
  *
- * A implementer
- * Classe permettant la detection de cycle sur un graphe oriente
+ * Modified on 11 octobre 2019
+ *  By Gabriel Roch, Gwendoline Dössegger, Jean-Luc Blanc 
  */
 
 #ifndef ASD2_DirectedCycle_h

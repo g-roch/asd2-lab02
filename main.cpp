@@ -1,8 +1,11 @@
 /*
- * File:   DFSOrder.h
+ * File:   main.cpp
  * Author: Cuisenaire
  * Labo 2
  * Created on 3. novembre 2014, 08:23
+ *
+ * Modified on 11 octobre 2019
+ *  By Gabriel Roch, Gwendoline Dössegger, Jean-Luc Blanc 
  */
 
 

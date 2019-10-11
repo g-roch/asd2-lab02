@@ -4,8 +4,8 @@
  *
  * Created on 08. octobre 2014, 14:07
  *
- * A implementer
- * Classe permettant le tri topologique d'un graphe oriente
+ * Modified on 11 octobre 2019
+ *  By Gabriel Roch, Gwendoline Dössegger, Jean-Luc Blanc 
  */
 
 #ifndef ASD2_TopologicalSort_h
