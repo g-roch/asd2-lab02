@@ -25,7 +25,7 @@ public:
     }
     
     template <typename FuncPre, typename FuncPost>
-    void visitGraph(FuncPre fpre, FuncPost fpost) { // visit the whole graph
+    void visitGraph(FuncPre fpre, FuncPost fpost) { // parcours le graphe en entier
         if(g.V()>0)
             visit(0,fpre,fpost);
         for(int v=1;v<g.V();++v)
@@ -84,7 +84,7 @@ public:
     }
     
     template <typename FuncPre, typename FuncPost>
-    void visitGraph(FuncPre fpre, FuncPost fpost) {         // visit the whole graph
+    void visitGraph(FuncPre fpre, FuncPost fpost) {         // parcours le graphe en entier
         marked.assign(g.V(), false);
         for(int v=0;v<g.V();++v)
             if(!marked[v])

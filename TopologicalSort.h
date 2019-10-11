@@ -51,7 +51,7 @@ class TopologicalSort {
     class GraphNotDAGException : public std::exception {
 
       private:
-        //indexes des sommets du cycle qui empeche le tris topologique
+        //indexes des sommets du cycle qui empechent le tris topologique
         const std::list<int> cycle;
 
       public:

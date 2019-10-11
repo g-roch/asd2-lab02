@@ -19,7 +19,7 @@
 
 using namespace std;
 
-//methode permettant de verifier le graphe trie par rapport au fichier d'entree
+//methode permettant de verifier si le graphe est bien trié par rapport au fichier d'entrée
 bool checkOrder(const std::vector<int>& order,
     const SymbolGraph<DiGraph>& SG,
     const std::string& filename,
@@ -41,7 +41,7 @@ bool checkOrder(const std::vector<int>& order,
     for(size_t i = 1; i < names.size(); ++i) {
 
       int v = SG.index(names[0]); // module
-      int w = SG.index(names[i]); // ieme prerequis
+      int w = SG.index(names[i]); // ième prérequis
 
       if ( positionInOrder[ v ] < positionInOrder [ w ]) {
         cout << "Erreur d'ordre : " << names[0] << " avant " << names[i] << endl;
@@ -54,11 +54,12 @@ bool checkOrder(const std::vector<int>& order,
   return ok;
 }
 
-// Effectue les testes sur un fichier données
+// Effectue les tests sur un fichier donné
 void test(const std::string & filename) {
   SymbolGraph<DiGraph> SG(filename, ',');
   DirectedCycle<DiGraph> DC(SG.G());
 
+  //détecte si le graphe possède un cycle
   if(DC.HasCycle()) {
     std::cout << filename << " n'est pas un DAG" << std::endl;
     std::cout << "Cycle trouvé : " << std::endl;

@@ -33,11 +33,11 @@ class SymbolGraph
     delete g; 
   }            
 
-  //creation du SymbolGraph a partir du fichier
+  //creation du SymbolGraph à partir du fichier
   SymbolGraph(const std::string& filename, char delim = '/') {   
 
     // lecture du fichier, ligne par ligne puis 
-    // element par element (separes par delim)
+    // élément par élément (séparés par delim)
 
     std::string line;
     int cnt=0; 
@@ -73,7 +73,7 @@ class SymbolGraph
 
   }
 
-  //verifie la presence d'un symbole
+  //vérifie la présence d'un symbole
   bool contains(const std::string& name) const {
     return symbolTable.find(name) != symbolTable.end();
   }
@@ -94,12 +94,12 @@ class SymbolGraph
     if(!contains(symbol))
       return std::vector<std::string>(0);
 
-    // les idx adjacents a l'idx de symbol
+    // les indexes adjacents à l'index de symbol
     auto& adjIdx = g->adjacent( index(symbol));
 
     std::vector<std::string> adjStr(adjIdx.size());
 
-    // transformation en symboles de la liste d'idx adjacents
+    // transformation en symboles de la liste d'indexes adjacents
     for (auto adjId : adjIdx) {
       adjStr.push_back(this->name(adjId));
     }

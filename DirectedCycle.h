@@ -26,13 +26,14 @@ class DirectedCycle {
       empiled[v] = true;
       for(auto sommet : G.adjacent(v))
       {
+         //Si le sommet n'est pas marqué
         if(marked[sommet] == -1) {
           marked[sommet] = v;
           if(cycleDetection(sommet))
             return true;
         }
+         // possède un cycle
         else if(empiled[sommet]) {
-          // has cycle
           cycle.push_front(sommet);
           for(int i = v; i != sommet; i = marked[i]) {
             cycle.push_front(i);

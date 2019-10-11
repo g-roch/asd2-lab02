@@ -4,7 +4,7 @@
  *
  * Created on 7. octobre 2014, 16:54
  * 
- * Implementation d'un graphe oriente par liste d'adjacence
+ * Implementation d'un graphe orienté par liste d'adjacence
  */
 
 #ifndef DIGRAPH_H
