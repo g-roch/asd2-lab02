@@ -20,10 +20,15 @@
 template < typename GraphType >
 class TopologicalSort {
   private:
+    //Vecteur contenant le parcours du graphe inversé en post-ordre inverse
     std::vector <int> reversedPostOrdRevGraph;
 
   public:
-    //constructeur
+
+    /**
+     * @brief Constructeur
+     * @param référence sur le graphe g que l'on veut trié
+     */
     TopologicalSort(const GraphType & g) {
       DirectedCycle<GraphType> dc(g);
       if(dc.HasCycle())
@@ -42,7 +47,10 @@ class TopologicalSort {
       }
     }
 
-    //tableau contenant l'ordre de parcours des indexes des sommets dans le graphe
+    /**
+     * @brief tableau contenant l'ordre de parcours des indexes des sommets dans le graphe
+     * @return une référence sur un vecteur de int
+     */
     const std::vector<int>& Order() const {
       return reversedPostOrdRevGraph;
     }
