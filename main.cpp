@@ -54,12 +54,15 @@ bool checkOrder(const std::vector<int>& order,
   return ok;
 }
 
-// Effectue les tests sur un fichier donné
+/** 
+ * Effecture les tests sur un fichier d'adjacent donné
+ * Les sommets sont séparé par des ','
+ */
 void test(const std::string & filename) {
   SymbolGraph<DiGraph> SG(filename, ',');
   DirectedCycle<DiGraph> DC(SG.G());
 
-  //détecte si le graphe possède un cycle
+  // détecte si le graphe possède un cycle
   if(DC.HasCycle()) {
     std::cout << filename << " n'est pas un DAG" << std::endl;
     std::cout << "Cycle trouvé : " << std::endl;
@@ -67,7 +70,7 @@ void test(const std::string & filename) {
       std::cout << SG.symbol(i) << " ";
     }
     std::cout << std::endl;
-  } else {
+  } else { // Le graph est un DAG
     std::cout << filename << " est un DAG" << std::endl;
     std::cout << "Ordre topologique : " << std::endl;
     TopologicalSort<DiGraph> TS(SG.G());
@@ -75,16 +78,17 @@ void test(const std::string & filename) {
       std::cout << SG.symbol(i) << " ";
     }
     std::cout << std::endl;
+
     if(!checkOrder(TS.Order(), SG, filename, ',')) {
+      // Notre ordre n'est pas correct
       std::cerr << "!!!! Erreur dans l'algorithme !!!!" << std::endl;
     }
   }
-
-
 }
 
 int main() {
 
+  // Test les 2 fichiers
   test("prerequis.txt");
   test("prerequis2.txt");
 
