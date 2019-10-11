@@ -14,58 +14,58 @@
 #include <vector>
 template<typename GraphType>
 class DirectedCycle {
-private:
-  const GraphType& G;
+  private:
+    const GraphType& G;
 
-  std::vector<int> marked;
-  std::vector<bool> empiled;
-  std::list<int> cycle;
+    std::vector<int> marked;
+    std::vector<bool> empiled;
+    std::list<int> cycle;
 
-  void cycleDetection(int v) {
-    empiled[v] = true;
-    for(auto sommet : G.adjacent(v))
-    {
-      if(HasCycle()) return;
-      else if(marked[sommet] == -1) {
-        marked[sommet] = v;
-        cycleDetection(sommet);
-      }
-      else if(empiled[sommet]) {
-        // has cycle
-        cycle.push_front(sommet);
-        for(int i = v; i != sommet; i = marked[i]) {
+    // Methode de recherche de cycle
+    bool cycleDetection(int v) {
+      empiled[v] = true;
+      for(auto sommet : G.adjacent(v))
+      {
+        if(marked[sommet] == -1) {
+          marked[sommet] = v;
+          if(cycleDetection(sommet))
+            return true;
+        }
+        else if(empiled[sommet]) {
+          // has cycle
           cycle.push_front(sommet);
+          for(int i = v; i != sommet; i = marked[i]) {
+            cycle.push_front(i);
+          }
+          return true;
+        }
+      }
+      empiled[v] = false;
+      return false;
+    }
+
+
+  public:
+    // Construit et recherche les cycles
+    DirectedCycle(const GraphType& G) : G(G), marked(G.V(), -1), empiled(G.V(), false) {
+      for(int i = 0; i < G.V(); ++i) {
+        if(marked[i] == -1) {
+          marked[i] = i;
+          if(cycleDetection(i)) 
+            break;
         }
       }
     }
-    empiled[v] = false;
-  }
 
-
-public:
-	//constructeur
-	DirectedCycle(const GraphType& G) : G(G), marked(G.V(), -1), empiled(G.V(), false) {
-    for(int i = 0; i < G.V() && !HasCycle(); ++i) {
-      if(marked[i] == -1) {
-        marked[i] = i;
-        cycleDetection(i);
-      }
+    //indique la presence d'un cycle
+    bool HasCycle() const {
+      return !cycle.empty();
     }
-	}
 
-	//indique la presence d'un cycle
-	bool HasCycle() const {
-    return !cycle.empty();
-		/* A IMPLEMENTER */
-		//return ...
-	}
-
-	//liste les indexes des sommets formant une boucle
-	std::list<int> Cycle() {
-    return cycle;
-		/* A IMPLEMENTER */
-		//return ...
-	}
+    //liste les indexes des sommets formant une boucle
+    std::list<int> Cycle() {
+      return cycle;
+    }
 
 };
 
