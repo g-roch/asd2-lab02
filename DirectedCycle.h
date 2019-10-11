@@ -21,7 +21,12 @@ class DirectedCycle {
     std::vector<bool> empiled;
     std::list<int> cycle;
 
-    // Methode de recherche de cycle
+    
+    /**
+     * @brief Methode de recherche de cycle
+     * @param v sommet depuis lequel ont veut détecter un cycle
+     * @return true si il y a un cycle, sinon false
+     */
     bool cycleDetection(int v) {
       empiled[v] = true;
       for(auto sommet : G.adjacent(v))
@@ -47,7 +52,11 @@ class DirectedCycle {
 
 
   public:
-    // Construit et recherche les cycles
+    
+     /**
+      * @brief Construit et recherche les cycles
+      * @param G graphe dont on veut détecter les cycles
+      */
     DirectedCycle(const GraphType& G) : G(G), marked(G.V(), -1), empiled(G.V(), false) {
       for(int i = 0; i < G.V(); ++i) {
         if(marked[i] == -1) {
@@ -58,12 +67,20 @@ class DirectedCycle {
       }
     }
 
-    //indique la presence d'un cycle
+    
+    /**
+     * @brief indique la presence d'un cycle
+     * @return renvoie true si il y a un cycle, sinon renvoie false
+     */
     bool HasCycle() const {
       return !cycle.empty();
     }
 
-    //liste les indexes des sommets formant une boucle
+    
+    /**
+     * @brief liste les indexes des sommets formant une boucle
+     * @return permet de récupérer la liste des cycles
+     */
     std::list<int> Cycle() {
       return cycle;
     }
